@@ -251,7 +251,7 @@ paths:
               description: 'W zależności od błędu wartość z [...]'
               schema:
                 type: string
-  /user/remind-password/{email}:
+  /user/remind-password:
     post:
       tags:
         - user
@@ -260,8 +260,8 @@ paths:
       operationId: remindPassword
       parameters:
       - name: email
-        in: path
-        description: "email użytkownika którego hasło chcemy przypomnieć"
+        in: query
+        description: "email użytkownika dla którego wyślemy nowe hasło"
         required: true
         schema:
           type: string
