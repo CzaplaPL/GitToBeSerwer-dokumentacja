@@ -213,7 +213,7 @@ paths:
         '404':
           description: 'Nie znaleziono użytkownika o takim emailu'
   /user/{id}/password-update:
-    post:
+    put:
       tags:
         - user
       summary: Zmiana hasła użytkownika o podanym ID
