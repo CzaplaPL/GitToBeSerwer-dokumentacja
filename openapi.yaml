@@ -357,3 +357,116 @@ components:
           type: string
       xml:
         name: PasswordUpdateForm
+    Excersise:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        descriptionOfCorrectExecution:
+          type: string
+        excersiseForm:
+          type: string
+          example: TIME
+        videoUrl:
+          type: string
+        photoUrl:
+          type: string
+        trainingType:
+          type: string
+          example: CARDIO
+        bodyPortions:
+          type: array
+          items:
+            $ref: "#/components/schemas/BodyPortion"
+          example: [CHEST, SIXPACK, BICEPS, TRICEPS]
+    Equipment:
+      type: object
+      properties:
+        id:
+          type: integer
+        userID:
+          type: integer
+        equipmentType:
+          $ref: '#/components/schemas/EquipmentType'
+        name:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        excersises:
+          type: array
+          items:
+            $ref: '#/components/schemas/Excersise'
+    EquipmentType:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        url:
+          type: string
+    TrainingType:
+      type: string
+      enum:
+        - STRENGTH 
+        - CARDIO
+        - FITNESS
+    TrainingSubType:
+      type: string
+      enum:
+        - SPLIT
+        - FULL_BODY_WORKOUT
+        - SERIES
+        - CIRCUIT
+    BodyPortion:
+      type: string
+      enum:
+        - CHEST
+        - SIXPACK
+        - BACK 
+        - VERTICAL_BACK
+        - HORIZONTAL_BACK
+        - LEGS
+        - THIGHS 
+        - CALFS
+        - BUTTOCKS
+        - ARMS
+        - BICEPS 
+        - TRICEPS
+        - SHOULDERS
+    ExcersiseForm:
+      type: string
+      enum:
+        - TIME
+        - REPEAT
+    GenerateWorkoutForm:
+      type: object
+      properties:
+        trainingType:
+          type: string
+          $ref: "#/components/schemas/TrainingType"
+        trainingSubType:
+          type: string
+          $ref: "#/components/schemas/TrainingSubType"
+        equipmentIDs:
+          type: array
+          items:
+            type: integer
+        bodyPortions:
+          type: array
+          items:
+            $ref: "#/components/schemas/BodyPortion"
+        duration:
+          type: integer
+          example: "60 min"
+        intensity:
+          example: "1-3"
+          type: integer
+
+
