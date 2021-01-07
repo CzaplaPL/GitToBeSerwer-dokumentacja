@@ -390,8 +390,8 @@ components:
           type: integer
         userID:
           type: integer
-        equipmentType:
-          $ref: '#/components/schemas/EquipmentType'
+        equipmentTypeID:
+          type: integer
         name:
           type: string
         description:
@@ -468,5 +468,4 @@ components:
         intensity:
           example: "1-3"
           type: integer
-
 
