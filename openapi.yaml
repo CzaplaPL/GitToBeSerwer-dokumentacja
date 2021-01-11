@@ -251,7 +251,7 @@ paths:
           description: |
             [weak password] - hasło nie pasuje do wyrażenia,
 
-            [bad password] - podany email istnieje w bazie
+            [bad password] - złe hasło użytkownika
           headers:
             Cause:
               description: 'W zależności od błędu wartość z [...]'
