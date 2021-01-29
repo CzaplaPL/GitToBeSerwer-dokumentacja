@@ -25,7 +25,7 @@ paths:
         required: true
       responses:
         '200':
-          description: ''
+          description: Logowanie przy użyciu facebooka powiodło się
           headers:
             Authorization:
               description: JWT token dostępu do API serwera
@@ -41,6 +41,11 @@ paths:
                 type: integer
         '400':
           description: Token nie przeszedł walidacji Facebooka
+          headers:
+            Cause:
+              description: infomacja "user not found"
+              schema:
+                type: string
   /user/login/google:
     post:
       tags:
@@ -64,7 +69,19 @@ paths:
               schema:
                 type: string
         '400':
-          description: Token nie przeszedł walidacji Google
+          description: |
+            Logowanie nie powiodło się. Zawiera odpowiedni opis w zależności od błędu
+            
+            [user not found] - weryfikacja nie zwróciła użytkownika
+            
+            [token verification failed] - token nie przeszedł weryfikacji
+            
+            [parsing failed] - parsowanie przesłanego pliku JSON nie powiodło się
+          headers:
+            Cause:
+              description: 'w zależności od błędu [...]'
+              schema:
+                type: string
   /user/signup:
     post:
       tags:
@@ -89,10 +106,10 @@ paths:
               description: 'Adres URL nowo stworzonego usera'
               schema:
                 type: string
-        '400':
-          description: ''
         '409':
           description: |
+            Nie udało się stworzyć konta z któregoś z poniższych powodów
+          
             [weak password] - hasło nie pasuje do wyrażenia,
 
             [bad email] - email nie ma struktury maila, 
@@ -103,6 +120,20 @@ paths:
               description: 'W zależności od błędu wartość z [...]'
               schema:
                 type: string
+        '500':
+          description: 'Nieokreślony błąd serwera'
+          headers:
+              Cause:
+                description: '[unexpected error]'
+                schema:
+                  type: string
+        '503':
+          description: 'Błąd wysyłania emaila'
+          headers:
+              Cause:
+                description: '[email sending]'
+                schema:
+                  type: string
   /user/login:
     post:
       tags:
@@ -158,6 +189,11 @@ paths:
                 $ref: '#/components/schemas/User'
         '404':
           description: 'Nie znaleziono użytkownika o takim email'
+          headers:
+            Cause:
+              description: '[user not found]'
+              schema:
+                type: string
     delete:
       tags:
         - user
@@ -182,6 +218,11 @@ paths:
           description: 'Usunięto'
         '404':
           description: 'Nie znaleziono użytkownika o takim id'
+          headers:
+            Cause:
+              description: '[user not found]'
+              schema:
+                type: string
   /user/search/{email}:
     get:
       tags:
@@ -212,6 +253,11 @@ paths:
                 type: string
         '404':
           description: 'Nie znaleziono użytkownika o takim emailu'
+          headers:
+            Cause:
+              description: '[user not found]'
+              schema:
+                type: string
   /user/{id}/password-update:
     put:
       tags:
@@ -247,6 +293,11 @@ paths:
           description: OK
         '404':
           description: 'Nie znaleziono użytkownika o takim id'
+          headers:
+            Cause:
+              description: '[user not found]'
+              schema:
+                type: string
         '409':
           description: |
             [weak password] - hasło nie pasuje do wyrażenia,
@@ -276,10 +327,25 @@ paths:
           description: 'wysłano maila'
         '404':
           description: 'nie ma takiego maila w bazie'
+          headers:
+            Cause:
+              description: '[user not found]'
+              schema:
+                type: string
         '409':
           description: 'nie udało sie zrobic update w bazie'
-        '424':
+          headers:
+            Cause:
+              description: '[save error]'
+              schema:
+                type: string
+        '503':
           description: 'błąd w wysyłaniu maila'
+          headers:
+            Cause:
+              description: '[email sending]'
+              schema:
+                type: string
   /user/{id}/email-update: 
     put:
       tags:
@@ -315,10 +381,33 @@ paths:
           description: 'Zmieniono email, ustawiono w bazie, że user nie jest aktywowany oraz wysłano maila z linkiem do weryfikacji'
         '404':
           description: 'Jeśli usera o danym id nie ma w bazie'
+          headers:
+            Cause:
+              description: '[user not found]'
+              schema:
+                type: string
+            
         '409':
-          description: 'Jeśli hasło jest nieprawidłowe lub podany email jest już w bazie'
-        '424':
-          description: 'Jeśli usera o danym id nie ma w bazie'
+          description: |
+            Jeśli hasło jest nieprawidłowe lub podany email jest już w bazie
+            
+            [wrong password] - podane hasło nie jest zgodne z tym zapisanym w bazie
+            
+            [wrong email] - email nie przechodzi walidacji
+            
+            [duplicated email] - podany email jest już wykorzystywany
+          headers:
+            Cause:
+              description: 'W zależności od błędu [...]'
+              schema:
+                type: string
+        '503':
+          description: 'Jeśli nie uda się wysłać emaila weryfikacyjnego'
+          headers:
+            Cause:
+              description: '[email sending]'
+              schema:
+                type: string
 components:
   schemas:
     User:
