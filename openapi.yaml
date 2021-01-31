@@ -408,6 +408,31 @@ paths:
               description: '[email sending]'
               schema:
                 type: string
+  /user/token-verification/{token}:
+    post:
+      tags:
+        - user
+      summary: Pobieranie użytkownika przez ID
+      description: ''
+      operationId: tokenVerification
+      parameters:
+      - name: token
+        in: path
+        description: ""
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: "W nagłówku podany jest nowy token z nowym czasem wygaszania"
+          headers:
+            Authorization:
+              description: 'Bearer tokenExample!@#!@#'
+              schema:
+                type: string
+        '404':
+          description: 'Token niepoprawny lub jego ważność wygasła'
+
 components:
   schemas:
     User:
