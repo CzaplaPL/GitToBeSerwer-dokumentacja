@@ -8,6 +8,10 @@ servers:
 tags:
   - name: user
     description: Operacje na użytkowniku
+  - name: equipment-type
+    description: Kategorie sprzętów
+  - name: equipment
+    description: Operacje na sprzętach
 paths:
   /user/login/facebook:
     post:
@@ -430,9 +434,52 @@ paths:
               description: 'Bearer tokenExample!@#!@#'
               schema:
                 type: string
-        '404':
-          description: 'Token niepoprawny lub jego ważność wygasła'
-
+        '403':
+          description: 'Token niepoprawny [token is not valid] lub jesli uzytkownika nie ma [user not found]'
+          headers:
+            Cause:
+              description: 'W zależności od błędu [...]'
+              schema:
+                type: string
+  
+  /equipment-type:
+    get:
+      tags:
+        - equipment-type
+      summary: Pobieranie wszystkich kategorii sprzętów
+      description: ''
+      responses:
+        '200':
+          description: "Pobieranie się udało"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EquipmentTypeArray'
+                
+  /equipment:
+    get:
+      tags:
+        - equipment
+      summary: Pobieranie wszystkich kategorii sprzętów
+      description: ''
+      parameters:
+      - name: "typeId"
+        description: "Id kategorii, z której ćwiczenia mają zostać pobrane"
+        in: query
+        required: true
+        schema: 
+          type: integer
+      responses:
+        '200':
+          description: "Pobieranie się udało"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EquipmentArray'
+        '400':
+          description: 'Jeżeli typeId nie zostanie podany lub nie zostanie w ogóle zawarty'
+        
+    
 components:
   schemas:
     User:
@@ -502,20 +549,19 @@ components:
       properties:
         id:
           type: integer
-        userID:
-          type: integer
-        equipmentTypeID:
-          type: integer
+        equipmentType:
+          type: object
+          $ref: "#/components/schemas/EquipmentType"
         name:
           type: string
         description:
           type: string
         url:
           type: string
-        excersises:
-          type: array
-          items:
-            $ref: '#/components/schemas/Excersise'
+    EquipmentArray:
+      type: array
+      items:
+        $ref: "#/components/schemas/Equipment"
     EquipmentType:
       type: object
       properties:
@@ -525,6 +571,10 @@ components:
           type: string
         url:
           type: string
+    EquipmentTypeArray:
+      type: array
+      items:
+        $ref: "#/components/schemas/EquipmentType"
     TrainingType:
       type: string
       enum:
