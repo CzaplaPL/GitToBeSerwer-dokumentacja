@@ -33,10 +33,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/user/signup",
+					"raw": "https://{{baseUrl}}:8443/user/signup",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -75,10 +75,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/user/signup",
+					"raw": "https://{{baseUrl}}:8443/user/signup",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -117,10 +117,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/user/signup",
+					"raw": "https://{{baseUrl}}:8443/user/signup",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -159,10 +159,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/user/signup",
+					"raw": "https://{{baseUrl}}:8443/user/signup",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -201,10 +201,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/user/login",
+					"raw": "https://{{baseUrl}}:8443/user/login",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -243,10 +243,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/user/login",
+					"raw": "https://{{baseUrl}}:8443/user/login",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -277,10 +277,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/user/0",
+					"raw": "https://{{baseUrl}}:8443/user/0",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -310,10 +310,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/user/1",
+					"raw": "https://{{baseUrl}}:8443/user/1",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -343,10 +343,10 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/user/0",
+					"raw": "https://{{baseUrl}}:8443/user/0",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -376,10 +376,10 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/user/1",
+					"raw": "https://{{baseUrl}}:8443/user/1",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -418,10 +418,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/user/signup",
+					"raw": "https://{{baseUrl}}:8443/user/signup",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -460,10 +460,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/user/signup",
+					"raw": "https://{{baseUrl}}:8443/user/signup",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -494,10 +494,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/user/search/user@user.com",
+					"raw": "https://{{baseUrl}}:8443/user/search/user@user.com",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -528,10 +528,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/user/search/u@user.com",
+					"raw": "https://{{baseUrl}}:8443/user/search/u@user.com",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -572,10 +572,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/user/0/password-update",
+					"raw": "https://{{baseUrl}}:8443/user/0/password-update",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -616,10 +616,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/user/2/password-update",
+					"raw": "https://{{baseUrl}}:8443/user/2/password-update",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -660,10 +660,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/user/2/password-update",
+					"raw": "https://{{baseUrl}}:8443/user/2/password-update",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -703,10 +703,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/user/2/password-update",
+					"raw": "https://{{baseUrl}}:8443/user/2/password-update",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -737,10 +737,10 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/user/remind-password?email=user123@user.com",
+					"raw": "https://{{baseUrl}}:8443/user/remind-password?email=user123@user.com",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -777,10 +777,10 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/user/remind-password?email=u@user.com",
+					"raw": "https://{{baseUrl}}:8443/user/remind-password?email=u@user.com",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -825,10 +825,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/user/2/email-update",
+					"raw": "https://{{baseUrl}}:8443/user/2/email-update",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -868,10 +868,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/user/0/email-update",
+					"raw": "https://{{baseUrl}}:8443/user/0/email-update",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -912,10 +912,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/user/2/email-update",
+					"raw": "https://{{baseUrl}}:8443/user/2/email-update",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -956,10 +956,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/user/2/email-update",
+					"raw": "https://{{baseUrl}}:8443/user/2/email-update",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -999,10 +999,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/user/signup",
+					"raw": "https://{{baseUrl}}:8443/user/signup",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -1020,9 +1020,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"New token in header\", () => {\r",
-							"    pm.response.to.have.status(200);\r",
-							"     pm.response.to.have.header(\"Authorization\");\r",
+							"pm.test(\"Correct signup\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -1034,15 +1033,15 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyQHVzZXIuY29tIiwiZXhwIjoxNjEzMjU5MTgwfQ.KFmWdRVXLOTyG5p_kOfp1p4BppTfWPdCm2gekP5SjYY",
+						"value": "{{correctToken}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "https://localhost:8443/user/token-verification",
+					"raw": "https://{{baseUrl}}:8443/user/token-verification",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -1080,15 +1079,21 @@
 					}
 				],
 				"url": {
-					"raw": "https://localhost:8443/user/token-verification",
+					"raw": "https://{{baseUrl}}:8443/user/token-verification?token={{wrongToken}}",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
 						"user",
 						"token-verification"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{wrongToken}}"
+						}
 					]
 				}
 			},
@@ -1116,15 +1121,15 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1OTk5c2VyQHVzZXIuY29tIiwiZXhwIjoxNjEzMjU5NTg2fQ.3Fhwz1qadxi3TCZ4gUDflB48ysvQDgv-Reyp6cxq79U",
+						"value": "{{userNotFoundToken}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "https://localhost:8443/user/token-verification",
+					"raw": "https://{{baseUrl}}:8443/user/token-verification",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
 					"port": "8443",
 					"path": [
@@ -1178,6 +1183,10 @@
 		{
 			"key": "userNotFoundToken",
 			"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1OTk5c2VyQHVzZXIuY29tIiwiZXhwIjoxNjEzMjU5NTg2fQ.3Fhwz1qadxi3TCZ4gUDflB48ysvQDgv-Reyp6cxq79U"
+		},
+		{
+			"key": "baseUrl",
+			"value": "localhost"
 		}
 	]
 }
