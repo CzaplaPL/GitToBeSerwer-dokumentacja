@@ -587,7 +587,7 @@ components:
       enum:
         - SERIES
         - CIRCUIT
-    BodyPortion:
+    BodyParts:
       type: string
       enum:
         - CHEST
