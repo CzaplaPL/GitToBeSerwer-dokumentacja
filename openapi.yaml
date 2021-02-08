@@ -578,14 +578,13 @@ components:
     TrainingType:
       type: string
       enum:
-        - STRENGTH 
+        - SPLIT
+        - FULL_BODY_WORKOUT
         - CARDIO
         - FITNESS
     TrainingSubType:
       type: string
       enum:
-        - SPLIT
-        - FULL_BODY_WORKOUT
         - SERIES
         - CIRCUIT
     BodyPortion:
