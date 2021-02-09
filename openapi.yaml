@@ -542,7 +542,7 @@ components:
         bodyPortions:
           type: array
           items:
-            $ref: "#/components/schemas/BodyPortion"
+            $ref: "#/components/schemas/BodyParts"
           example: [CHEST, SIXPACK, BICEPS, TRICEPS]
     Equipment:
       type: object
@@ -558,10 +558,21 @@ components:
           type: string
         url:
           type: string
+    SimplifiedEquipment:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
     EquipmentArray:
       type: array
       items:
-        $ref: "#/components/schemas/Equipment"
+        $ref: "#/components/schemas/SimplifiedEquipment"
     EquipmentType:
       type: object
       properties:
@@ -624,7 +635,7 @@ components:
         bodyPortions:
           type: array
           items:
-            $ref: "#/components/schemas/BodyPortion"
+            $ref: "#/components/schemas/BodyParts"
         duration:
           type: integer
           example: "60 min"
