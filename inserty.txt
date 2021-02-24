@@ -26,3 +26,4 @@ insert into equipment(name, url, type_id) VALUES ('Sztanga gieta', '040-dumbbell
 
 insert into equipment(name, url, type_id) VALUES ('Drazek do podciagania', '045-pull-up-bar.png', 4);
 insert into equipment(name, url, type_id) VALUES ('Drazek do dipsow', 'dips.png', 4);
+insert into equipment(name, type_id) values ('Bez sprzetu', 4);
