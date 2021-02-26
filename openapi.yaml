@@ -3,8 +3,6 @@ info:
   title: Git2BeFit
   description: ''
   version: 1.0.0
-servers:
-  - url: 'https://77.55.236.227:8443'
 tags:
   - name: user
     description: Operacje na użytkowniku
@@ -12,6 +10,8 @@ tags:
     description: Kategorie sprzętów
   - name: equipment
     description: Operacje na sprzętach
+  - name: training
+    description: Wszystko związane z treningami
 paths:
   /user/login/facebook:
     post:
@@ -43,6 +43,13 @@ paths:
               description: ID użytkownika 
               schema:
                 type: integer
+        '409':
+          description: Podany email istnieje w bazie.
+          headers:
+            Cause:
+              description: infomacja "duplicate email"
+              schema:
+                type: string
         '400':
           description: Token nie przeszedł walidacji Facebooka
           headers:
@@ -52,7 +59,7 @@ paths:
                 type: string
   /user/login/google:
     post:
-      tags:
+      tags: 
         - user
       summary: Logowanie przez Google
       description: ''
@@ -115,9 +122,9 @@ paths:
             Nie udało się stworzyć konta z któregoś z poniższych powodów
           
             [weak password] - hasło nie pasuje do wyrażenia,
-
-            [bad email] - email nie ma struktury maila, 
-
+            
+            [bad email] - email nie ma struktury maila,
+            
             [duplicate entry] - podany email istnieje w bazie
           headers:
             Cause:
@@ -227,6 +234,13 @@ paths:
               description: '[user not found]'
               schema:
                 type: string
+        '409':
+          description: 'Przesłane hasło jest błędne.'
+          headers:
+            Cause:
+              description: '[wrong password]'
+              schema:
+                type: string
   /user/search/{email}:
     get:
       tags:
@@ -305,7 +319,7 @@ paths:
         '409':
           description: |
             [new password weak] - hasło nie pasuje do wyrażenia,
-
+            
             [bad password] - złe hasło użytkownika
           headers:
             Cause:
@@ -441,6 +455,35 @@ paths:
               description: 'W zależności od błędu [...]'
               schema:
                 type: string
+  /user/activation:
+    post:
+      tags:
+        - user
+      summary: Sprawdzanie, czy użytkownik jest aktywowany.
+      description: ''
+      operationId: checkingActivation
+      parameters:
+      - name: email
+        in: header
+        description: ""
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: "W przypadku, gdy uda się znaleźć użytkownika w bazie danych."
+          headers:
+            activation:
+              description: true lub false
+              schema:
+                type: string
+        '404':
+          description: 'Użytkownik nie został znaleziony.'
+          headers:
+            Cause:
+              description: '[user not found]'
+              schema:
+                type: string
   
   /equipment-type:
     get:
@@ -478,6 +521,50 @@ paths:
                 $ref: '#/components/schemas/EquipmentArray'
         '400':
           description: 'Jeżeli typeId nie zostanie podany lub nie zostanie w ogóle zawarty'
+  
+  /equipment/no-equipment:
+    get:
+      tags:
+        - equipment
+      summary: Pobieranie id dla "bez sprzętu".
+      description: ''
+      responses:
+        '200':
+          description: 'Bez sprzętu istnieje.'
+          headers:
+            id:
+              description: 'id "Bez sprzętu" '
+              schema:
+                type: integer
+        '404':
+          description: 'Jeżeli typeId nie zostanie podany lub nie zostanie w ogóle zawarty'
+          headers:
+            Cause:
+              description: '[doesnt exist]'
+              schema:
+                type: string
+                
+  /training-plan/generate:
+    post:
+      tags:
+        - training
+      summary: Generowanie przykładowego treningu.
+      description: ''
+      requestBody:
+        description: 'Można przesyłać formularz do generowania treningu'
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/TrainingForm'
+        required: false
+      responses:
+        '200':
+          description: 'Wygenerowany trening zawierający przesłany formularz'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Training'
+            
         
     
 components:
@@ -518,16 +605,18 @@ components:
           type: string
       xml:
         name: PasswordUpdateForm
-    Excersise:
+    Exercise:
       type: object
       properties:
         id:
           type: integer
         name:
           type: string
-        description:
+        descriptionOfStartPosition:
           type: string
         descriptionOfCorrectExecution:
+          type: string
+        hints:
           type: string
         excersiseForm:
           type: string
@@ -537,13 +626,19 @@ components:
         photoUrl:
           type: string
         trainingType:
-          type: string
-          example: CARDIO
-        bodyPortions:
           type: array
           items:
-            $ref: "#/components/schemas/BodyParts"
+            $ref: "#/components/schemas/TrainingType"
+          example: [CARDIO, FBW]
+        bodyPart:
+          type: object
+          items:
+            $ref: "#/components/schemas/BodyPart"
           example: [CHEST, SIXPACK, BICEPS, TRICEPS]
+        equipmentsNeeded:
+          type: array
+          items:
+            $ref: "#/components/schemas/Equipment"
     Equipment:
       type: object
       properties:
@@ -590,7 +685,7 @@ components:
       type: string
       enum:
         - SPLIT
-        - FULL_BODY_WORKOUT
+        - FBW
         - CARDIO
         - FITNESS
     TrainingSubType:
@@ -598,7 +693,7 @@ components:
       enum:
         - SERIES
         - CIRCUIT
-    BodyParts:
+    BodyPart:
       type: string
       enum:
         - CHEST
@@ -619,27 +714,63 @@ components:
       enum:
         - TIME
         - REPEAT
-    GenerateWorkoutForm:
+    TrainingForm:
       type: object
       properties:
-        trainingType:
-          type: string
-          $ref: "#/components/schemas/TrainingType"
-        trainingSubType:
-          type: string
-          $ref: "#/components/schemas/TrainingSubType"
         equipmentIDs:
           type: array
           items:
             type: integer
-        bodyPortions:
+        trainingType:
+          type: string
+          $ref: "#/components/schemas/TrainingType"
+        bodyParts:
           type: array
           items:
-            $ref: "#/components/schemas/BodyParts"
+            $ref: "#/components/schemas/BodyPart"
+        daysCount:
+          type: integer
+          example: "3"
+        scheduleType:
+          type: string
+          $ref: "#/components/schemas/TrainingSubType"
         duration:
           type: integer
           example: "60 min"
-        intensity:
-          example: "1-3"
+    ExerciseExecution:
+      type: object
+      properties:
+        id:
           type: integer
-
+        time:
+          type: integer
+        series:
+          type: integer
+        exercise:
+          type: object
+          items:
+            $ref: "#/components/schemas/Exercise"
+    TrainingPlan:
+      type: object
+      properties:
+        id:
+          type: integer
+        trainingId:
+          type: integer
+        exerciseExecutions:
+          type: array
+          items:
+            $ref: "#/components/schemas/ExerciseExecution"
+            
+    Training:
+      type: object
+      properties:
+        trainingForm:
+          type: object
+          items:
+            $ref: '#/components/schemas/TrainingForm'
+        planList:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrainingPlan'
+        
