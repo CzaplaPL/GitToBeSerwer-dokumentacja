@@ -170,7 +170,20 @@ paths:
               schema:
                 type: string
         '403':
-          description: 'Nie udane logowanie'
+          description: | 
+            Nie udane logowanie z poniższych powodów
+          
+            [user not exists] - użytkownik nie istnieje w bazie
+          
+            [bad password] - złe hasło
+          
+            [account is disabled] - konto jest nie aktywne
+          
+          headers:
+            Cause:
+              description: 'w zależności od błędu [...]'
+              schema:
+                type: string
   /user/{id}:
     get:
       tags:
