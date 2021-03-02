@@ -1,0 +1,4 @@
+Insert into training_types(name) VALUES ("SPLIT");
+Insert into training_types(name) VALUES ("FBW");
+Insert into training_types(name) VALUES ("CARDIO");
+Insert into training_types(name) VALUES ("FITNESS");

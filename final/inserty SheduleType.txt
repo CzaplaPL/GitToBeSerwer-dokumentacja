@@ -1,0 +1,2 @@
+Insert into shedule_types(name) VALUES ("REPEAT");
+Insert into shedule_types(name) VALUES ("TIME");

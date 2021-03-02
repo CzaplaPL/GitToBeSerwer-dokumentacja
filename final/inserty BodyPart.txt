@@ -1,0 +1,8 @@
+Insert into body_parts(name) VALUES ("CHEST");
+Insert into body_parts(name) VALUES ("SIXPACK");
+Insert into body_parts(name) VALUES ("BACK");
+Insert into body_parts(name) VALUES ("THIGHS");
+Insert into body_parts(name) VALUES ("CALVES");
+Insert into body_parts(name) VALUES ("BICEPS");
+Insert into body_parts(name) VALUES ("TRICEPS");
+Insert into body_parts(name) VALUES ("SHOULDERS");
