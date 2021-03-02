@@ -770,7 +770,7 @@ components:
           type: integer
         trainingId:
           type: integer
-        exerciseExecutions:
+        exercisesExecutions:
           type: array
           items:
             $ref: "#/components/schemas/ExerciseExecution"
