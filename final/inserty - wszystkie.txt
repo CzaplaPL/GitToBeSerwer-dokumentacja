@@ -39,8 +39,8 @@ Insert into training_types(name) VALUES ("CARDIO");
 Insert into training_types(name) VALUES ("FITNESS");
 
 
-Insert into shedule_types(name) VALUES ("REPEAT");
-Insert into shedule_types(name) VALUES ("TIME");
+Insert into training_forms(name) VALUES ("REPEAT");
+Insert into training_forms(name) VALUES ("TIME");
 
 
 Insert into body_parts(name) VALUES ("CHEST");
