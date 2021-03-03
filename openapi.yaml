@@ -644,7 +644,7 @@ components:
             $ref: "#/components/schemas/TrainingType"
           example: [CARDIO, FBW]
         bodyPart:
-          type: object
+          type: array
           items:
             $ref: "#/components/schemas/BodyPart"
           example: [CHEST, SIXPACK, BICEPS, TRICEPS]
@@ -759,23 +759,13 @@ components:
           type: integer
         series:
           type: integer
+        count:
+          type: integer
         exercise:
           type: object
           items:
             $ref: "#/components/schemas/Exercise"
     TrainingPlan:
-      type: object
-      properties:
-        id:
-          type: integer
-        trainingId:
-          type: integer
-        exercisesExecutions:
-          type: array
-          items:
-            $ref: "#/components/schemas/ExerciseExecution"
-            
-    Training:
       type: object
       properties:
         trainingForm:
@@ -786,4 +776,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TrainingPlan'
+    Training:
+      type: object
+      properties:
+        id:
+          type: integer
+        trainingId:
+          type: integer
+        exercisesExecutions:
+          type: array
+          items:
+            $ref: "#/components/schemas/ExerciseExecution"
         
