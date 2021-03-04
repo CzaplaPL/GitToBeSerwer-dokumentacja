@@ -591,6 +591,8 @@ components:
           type: string
         password:
           type: string
+        enable:
+          type: boolean
     APIAuthModel:
       type: object
       properties:
@@ -631,23 +633,20 @@ components:
           type: string
         hints:
           type: string
-        excersiseForm:
-          type: string
-          example: TIME
+        exerciseForm:
+          type: object
+          $ref: "#/components/schemas/ExerciseForm"
         videoUrl:
           type: string
         photoUrl:
           type: string
-        trainingType:
+        bodyPart:
+          type: object
+          $ref: "#/components/schemas/BodyPart"
+        trainingTypes:
           type: array
           items:
             $ref: "#/components/schemas/TrainingType"
-          example: [CARDIO, FBW]
-        bodyPart:
-          type: array
-          items:
-            $ref: "#/components/schemas/BodyPart"
-          example: [CHEST, SIXPACK, BICEPS, TRICEPS]
         equipmentsNeeded:
           type: array
           items:
@@ -695,38 +694,29 @@ components:
       items:
         $ref: "#/components/schemas/EquipmentType"
     TrainingType:
-      type: string
-      enum:
-        - SPLIT
-        - FBW
-        - CARDIO
-        - FITNESS
-    TrainingSubType:
-      type: string
-      enum:
-        - SERIES
-        - CIRCUIT
+      type: object
+      description: Jedno z wybranych - SPLIT, FBW, CARDIO, FITNESS
+      properties:
+        id: 
+          type: integer
+        name: 
+          type: string
     BodyPart:
-      type: string
-      enum:
-        - CHEST
-        - SIXPACK
-        - BACK 
-        - VERTICAL_BACK
-        - HORIZONTAL_BACK
-        - LEGS
-        - THIGHS 
-        - CALFS
-        - BUTTOCKS
-        - ARMS
-        - BICEPS 
-        - TRICEPS
-        - SHOULDERS
-    ExcersiseForm:
-      type: string
-      enum:
-        - TIME
-        - REPEAT
+      type: object
+      description: Jedno z wybranych - CHEST, SIXPACK, BACK, VERTICAL_BACK, HORIZONTAL_BACK, LEGS, THIGHS, CALFS, BUTTOCKS, ARMS, BICEPS, TRICEPS, SHOULDERS
+      properties:
+        id: 
+          type: integer
+        name: 
+          type: string
+    ExerciseForm:
+      type: object
+      description: Jedno z wybranych - TIME, REPEAT
+      properties:
+        id: 
+          type: integer
+        name: 
+          type: string
     TrainingForm:
       type: object
       properties:
@@ -736,17 +726,18 @@ components:
             type: integer
         trainingType:
           type: string
-          $ref: "#/components/schemas/TrainingType"
+          description: Jedno z wybranych - SPLIT, FBW, CARDIO, FITNESS
         bodyParts:
           type: array
           items:
-            $ref: "#/components/schemas/BodyPart"
+            type: string
+            description: Wybrane - CHEST, SIXPACK, BACK, VERTICAL_BACK, HORIZONTAL_BACK, LEGS, THIGHS, CALFS, BUTTOCKS, ARMS, BICEPS, TRICEPS, SHOULDERS
         daysCount:
           type: integer
           example: 3
         scheduleType:
           type: string
-          $ref: "#/components/schemas/TrainingSubType"
+          description: Jedno z wybranych - SERIES, CIRCUIT
         duration:
           type: integer
           example: 60
@@ -770,8 +761,7 @@ components:
       properties:
         trainingForm:
           type: object
-          items:
-            $ref: '#/components/schemas/TrainingForm'
+          $ref: '#/components/schemas/TrainingForm'
         planList:
           type: array
           items:
@@ -787,4 +777,3 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/ExerciseExecution"
-        
