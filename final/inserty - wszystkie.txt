@@ -26,7 +26,7 @@ insert into equipment(name, url, type_id) VALUES ('Sztanga gieta', '040-dumbbell
 insert into equipment(name, url, type_id) VALUES ('Drazek do podciagania', '045-pull-up-bar.png', 4);
 insert into equipment(name, url, type_id) VALUES ('Drazek do dipsow', 'dips.png', 4);
 
-insert into equipment(name, url, type_id) VALUES ('Bez sprzętu', 'nothing.png', 4);
+insert into equipment(name, url, type_id) VALUES ('Bez sprzetu', 'nothing.png', 4);
 insert into equipment(name, url, type_id) VALUES ('TRX', '033-chest-expander.png', 2);
 insert into equipment(name, url, type_id) VALUES ('Wyciag dolny', '035-machine.png', 1);
 insert into equipment(name, url, type_id) VALUES ('Ławka rzymska', '013-machine.png', 1);
