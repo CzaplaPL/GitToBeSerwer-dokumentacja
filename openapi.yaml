@@ -749,7 +749,7 @@ components:
           $ref: "#/components/schemas/TrainingSubType"
         duration:
           type: integer
-          example: "60 min"
+          example: "60"
     ExerciseExecution:
       type: object
       properties:
