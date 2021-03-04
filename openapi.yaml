@@ -743,13 +743,13 @@ components:
             $ref: "#/components/schemas/BodyPart"
         daysCount:
           type: integer
-          example: "3"
+          example: 3
         scheduleType:
           type: string
           $ref: "#/components/schemas/TrainingSubType"
         duration:
           type: integer
-          example: "60"
+          example: 60
     ExerciseExecution:
       type: object
       properties:
