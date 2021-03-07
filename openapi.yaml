@@ -577,6 +577,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Training'
+        '409':
+          description: 'W przypadku, gdy typ treningu nie jest obsługiwany.'
+          headers:
+            Cause:
+              description: '[type not implemented]'
+              schema:
+                type: string
             
         
     
