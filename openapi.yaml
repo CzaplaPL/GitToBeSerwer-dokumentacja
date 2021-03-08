@@ -744,7 +744,7 @@ components:
           example: 3
         scheduleType:
           type: string
-          description: Jedno z wybranych - SERIES, CIRCUIT
+          description: Jedno z wybranych - SERIES, CIRCUIT, PER_DAY, REPETITIVE
         duration:
           type: integer
           example: 60
