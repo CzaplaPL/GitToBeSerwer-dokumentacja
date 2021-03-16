@@ -497,7 +497,31 @@ paths:
               description: '[user not found]'
               schema:
                 type: string
-  
+  /user/activation/renew:
+    post:
+      tags:
+        - user
+      summary: Wysłanie nowego tokena do aktywacji na pocztę
+      description: ''
+      operationId: sendNewActivationToken
+      requestBody:
+        content:
+        
+          '':
+            schema:
+              $ref: '#/components/schemas/Email'
+        
+        required: true
+      responses:
+        '200':
+          description: "Wysłano maila z nowym tokenem"
+
+        '404':
+          description: 'Użytkownik nie został znaleziony.'
+          
+        '503':
+          description: 'Problem z wysyałeniem maila'
+         
   /equipment-type:
     get:
       tags:
@@ -589,6 +613,12 @@ paths:
     
 components:
   schemas:
+    Email:
+      type: object
+      properties:
+        email:
+          type: string
+
     User:
       type: object
       properties:
