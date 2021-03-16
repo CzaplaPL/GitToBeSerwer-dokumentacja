@@ -578,10 +578,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/TrainingPlan'
         '409':
-          description: 'W przypadku, gdy typ treningu nie jest obsługiwany.'
+          description: 'W przypadku, gdy wystąpi bład w formularzu Cause zwróci opis co jest błędne'
           headers:
             Cause:
-              description: '[type not implemented]'
+              description: '' 
               schema:
                 type: string
             
