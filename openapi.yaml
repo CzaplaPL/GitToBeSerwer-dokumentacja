@@ -169,7 +169,7 @@ paths:
               description: JWT token dostępu do API serwera
               schema:
                 type: string
-        '403':
+        '400':
           description: | 
             Nie udane logowanie z poniższych powodów
           
@@ -466,35 +466,6 @@ paths:
           headers:
             Cause:
               description: 'W zależności od błędu [...]'
-              schema:
-                type: string
-  /user/activation:
-    post:
-      tags:
-        - user
-      summary: Sprawdzanie, czy użytkownik jest aktywowany.
-      description: ''
-      operationId: checkingActivation
-      parameters:
-      - name: email
-        in: header
-        description: ""
-        required: true
-        schema:
-          type: string
-      responses:
-        '200':
-          description: "W przypadku, gdy uda się znaleźć użytkownika w bazie danych."
-          headers:
-            activation:
-              description: true lub false
-              schema:
-                type: string
-        '404':
-          description: 'Użytkownik nie został znaleziony.'
-          headers:
-            Cause:
-              description: '[user not found]'
               schema:
                 type: string
   /user/activation/renew:
