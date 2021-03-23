@@ -579,7 +579,69 @@ paths:
               description: '' 
               schema:
                 type: string
-            
+  /training-plan/save:
+    post:
+      tags:
+        - training
+      summary: Zapis treningów na serwerze.
+      description: ''
+      parameters:
+      - name: "Authorization"
+        description: "JWT token "
+        in: header
+        required: true
+        schema: 
+          type: string
+      - name: id
+        in: header
+        description: "Id użytkownika chcącego zapisać treningi"
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: 'Można przesyłać formularz do generowania treningu'
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ListOfTrainingPlans'
+        required: false
+      responses:
+        '200':
+          description: 'Lista treningów została pomyślnie zapisana'
+        '400':
+          description: 'W zależności od błędu'
+          headers:
+            Cause:
+              description: '[user not found] lub [cant be saved]' 
+              schema:
+                type: string
+  /training-plan:
+    get:
+      tags:
+        - training
+      summary: Pobranie treningów użytkownika, które zapisane są w bazie na serwerze.
+      description: ''
+      parameters:
+      - name: "Authorization"
+        description: "JWT token "
+        in: header
+        required: true
+        schema: 
+          type: string
+      - name: id
+        in: header
+        description: "Id użytkownika chcącego pobrać treningi"
+        required: true
+        schema:
+          type: integer
+    
+      responses:
+        '200':
+          description: 'Lista treningów użytkownika'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfTrainingPlans'     
         
     
 components:
@@ -785,3 +847,7 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/ExerciseExecution"
+    ListOfTrainingPlans:
+      type: array
+      items:
+        $ref: "#/components/schemas/TrainingPlan"
