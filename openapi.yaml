@@ -475,14 +475,13 @@ paths:
       summary: Wysłanie nowego tokena do aktywacji na pocztę
       description: ''
       operationId: sendNewActivationToken
-      requestBody:
-        content:
-        
-          '':
-            schema:
-              $ref: '#/components/schemas/Email'
-        
+      parameters:
+      - name: email
+        in: header
+        description: ""
         required: true
+        schema:
+          type: string
       responses:
         '200':
           description: "Wysłano maila z nowym tokenem"
