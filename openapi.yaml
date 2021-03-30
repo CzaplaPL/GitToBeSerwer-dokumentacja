@@ -641,8 +641,74 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListOfTrainingPlans'     
-        
+  /training-plan/{id}:
+    put:
+      tags:
+        - training
+      summary: Zmiana tytułu Training Planu
+      description: ''
+      parameters:
+      - name: "Authorization"
+        description: "JWT token "
+        in: header
+        required: true
+        schema: 
+          type: string
+      - name: id
+        in: path
+        description: "ID planu którego chcemy zmienić "
+        required: true
+        schema:
+          type: integer
+      - name: "title"
+        description: "Nowy tytuł"
+        in: header
+        required: true
+        schema: 
+          type: string
     
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'OK'
+          headers:
+            Cause:
+              description: 'TrainingPlan with id: {id} is unknown' 
+              schema:
+                $ref: '#/components/schemas/TrainingForm'
+  /replace/{id}:
+    post:
+      tags:
+        - training
+      summary: Podmiana podobnych ćwiczeń w planie
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        description: "ID ćwiczenia do podmiany"
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: 'Dormularz do generowania treningu'
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/TrainingForm'
+        required: false
+    
+      responses:
+        '200':
+          description: 'Zwrócona jest tablica ćwiczeń podobnych'
+        '404':
+          description: 
+          headers:
+            Cause:
+              description: 'Exercise with id: {id} is unknown' 
+              schema:
+                type: string
+            
 components:
   schemas:
     Email:
