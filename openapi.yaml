@@ -557,6 +557,13 @@ paths:
         - training
       summary: Generowanie przykładowego treningu.
       description: ''
+      parameters:
+      - name: "Authorization"
+        description: "JWT token "
+        in: header
+        required: false
+        schema: 
+          type: string
       requestBody:
         description: 'Można przesyłać formularz do generowania treningu'
         content:
@@ -591,12 +598,6 @@ paths:
         required: true
         schema: 
           type: string
-      - name: userId
-        in: header
-        description: "Id użytkownika chcącego zapisać treningi"
-        required: true
-        schema:
-          type: integer
       requestBody:
         description: 'Można przesyłać formularz do generowania treningu'
         content:
@@ -627,20 +628,13 @@ paths:
         required: true
         schema: 
           type: string
-      - name: userId
-        in: header
-        description: "Id użytkownika chcącego pobrać treningi"
-        required: true
-        schema:
-          type: integer
-    
       responses:
         '200':
           description: 'Lista treningów użytkownika'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListOfTrainingPlans'     
+                $ref: '#/components/schemas/ListOfTrainingPlans' 
   /training-plan/{id}:
     put:
       tags:
@@ -677,6 +671,31 @@ paths:
               description: 'TrainingPlan with id: {id} is unknown' 
               schema:
                 $ref: '#/components/schemas/TrainingForm'
+    get:
+      tags:
+        - training
+      summary: Pobranie treningów użytkownika, które zapisane są w bazie na serwerze.
+      description: ''
+      parameters:
+      - name: "Authorization"
+        description: "JWT token "
+        in: header
+        required: true
+        schema: 
+          type: string
+      - name: id
+        in: path
+        description: "ID planu, którego chcemy zmienić "
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: 'Lista treningów użytkownika'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfTrainingPlans' 
   /replace/{id}:
     post:
       tags:
@@ -702,7 +721,7 @@ paths:
         '200':
           description: 'Zwrócona jest tablica ćwiczeń podobnych'
         '404':
-          description: 
+          description: 'W przypadku, gdy przesłane id nie istnieje'
           headers:
             Cause:
               description: 'Exercise with id: {id} is unknown' 
