@@ -635,7 +635,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListOfTrainingPlans' 
-  /training-plan/{id}:
+  /training-plan/updateTitle/{id}:
     put:
       tags:
         - training
@@ -671,6 +671,7 @@ paths:
               description: 'TrainingPlan with id: {id} is unknown' 
               schema:
                 $ref: '#/components/schemas/TrainingForm'
+  /training-plan/{id}:
     get:
       tags:
         - training
