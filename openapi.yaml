@@ -697,6 +697,50 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListOfTrainingPlans' 
+    delete:
+      tags:
+        - training
+      summary: Pobranie treningów użytkownika, które zapisane są w bazie na serwerze.
+      description: ''
+      parameters:
+      - name: "Authorization"
+        description: "JWT token "
+        in: header
+        required: true
+        schema: 
+          type: string
+      - name: id
+        in: path
+        description: "ID planu, którego chcemy zmienić "
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: 'Użytkownik został usunięty'
+        '400':
+          description: |
+            W zależności od błędu
+            
+            [training plan not found],
+            
+            [user not allowed], 
+            
+            [user not found], 
+            
+            [wrong token]
+          headers:
+            Cause:
+              description: '[message]' 
+              schema:
+                type: string
+        '503':
+          description: 'W przypadku, gdy wystapi wewnterzny blad serwera'
+          headers:
+            Cause:
+              description: '[server error]' 
+              schema:
+                type: string
   /replace/{id}:
     post:
       tags:
