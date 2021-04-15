@@ -919,6 +919,8 @@ components:
     TrainingForm:
       type: object
       properties:
+        id:
+          type: string
         equipmentIDs:
           type: array
           items:
@@ -958,6 +960,10 @@ components:
     TrainingPlan:
       type: object
       properties:
+        id:
+          type: integer
+        title:
+          type: string
         trainingForm:
           type: object
           $ref: '#/components/schemas/TrainingForm'
