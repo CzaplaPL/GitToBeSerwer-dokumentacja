@@ -778,19 +778,7 @@ paths:
               description: 'Exercise with id: {id} is unknown' 
               schema:
                 type: string
-  /check-sums:
-    get:
-      tags:
-        - synchronize
-      summary: Pobranie treningów użytkownika, które zapisane są w bazie na serwerze.
-      description: ''
-      responses:
-        '200':
-          description: 'Lista tabel i ich sum kontrolnych'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListOfTablesControlSum'
+            
 components:
   schemas:
     Email:
@@ -1002,18 +990,11 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/ExerciseExecution"
+        breakTime:
+          type: integer
+        circuitCount:
+          type: integer
     ListOfTrainingPlans:
       type: array
       items:
         $ref: "#/components/schemas/TrainingPlan"
-    TableControlSum:
-      type: object
-      properties:
-        Table:
-          type: string
-        Checksum:
-          type: integer
-    ListOfTablesControlSum:
-      type: array
-      items:
-        $ref: "#/components/schemas/TableControlSum"    
