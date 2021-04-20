@@ -564,6 +564,12 @@ paths:
         required: false
         schema: 
           type: string
+      - name: "Date"
+        description: "Aktualna data w formacie ISO, np 2021-04-09T13:44:14"
+        in: header
+        required: false
+        schema: 
+          type: string
       requestBody:
         description: 'Można przesyłać formularz do generowania treningu'
         content:
@@ -971,6 +977,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TrainingPlan'
+        createdAt:
+          type: string
     Training:
       type: object
       properties:
