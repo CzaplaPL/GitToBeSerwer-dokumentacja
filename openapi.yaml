@@ -1002,6 +1002,10 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/ExerciseExecution"
+        breakTime:
+          type: integer
+        circuitsCount:
+          type: integer
     ListOfTrainingPlans:
       type: array
       items:
