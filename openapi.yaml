@@ -564,12 +564,6 @@ paths:
         required: false
         schema: 
           type: string
-      - name: "Date"
-        description: "Aktualna data w formacie ISO, np 2021-04-09T13:44:14"
-        in: header
-        required: false
-        schema: 
-          type: string
       requestBody:
         description: 'Można przesyłać formularz do generowania treningu'
         content:
@@ -778,11 +772,11 @@ paths:
               description: 'Exercise with id: {id} is unknown' 
               schema:
                 type: string
-  /check-sums:
+  /check-sum:
     get:
       tags:
         - synchronize
-      summary: Pobranie treningów użytkownika, które zapisane są w bazie na serwerze.
+      summary: Pobieranie sum kontrolnych tabel equipment i equipment_type
       description: ''
       responses:
         '200':
@@ -989,8 +983,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TrainingPlan'
-        createdAt:
-          type: string
     Training:
       type: object
       properties:
@@ -1002,10 +994,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/ExerciseExecution"
-        breakTime:
-          type: integer
-        circuitsCount:
-          type: integer
     ListOfTrainingPlans:
       type: array
       items:
