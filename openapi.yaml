@@ -589,21 +589,21 @@ paths:
           description: 'W przyadku gdy wygenerowany trening nie spełnia kryteriów akceptacji'
           headers:
             Cause:
-              description: '' 
+              description: 'wrong exercises count;duplicated exercises;wrong exercise;not enough days for set body parts;not enough exercises for [CHEST, BICEPS]' 
               schema:
                 type: string
         '400':
           description: 'Błąd w formacie daty'
           headers:
             Cause:
-              description: '' 
+              description: 'wrong date format' 
               schema:
                 type: string
         '204':
           description: 'Ilość sprzętu jest równa 0'
           headers:
             Cause:
-              description: '' 
+              description: 'Must be at least one equipment' 
               schema:
                 type: string
   /training-plan/save:
