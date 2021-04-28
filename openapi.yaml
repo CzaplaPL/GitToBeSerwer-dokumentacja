@@ -585,6 +585,27 @@ paths:
               description: '' 
               schema:
                 type: string
+        '417':
+          description: 'W przyadku gdy wygenerowany trening nie spełnia kryteriów akceptacji'
+          headers:
+            Cause:
+              description: '' 
+              schema:
+                type: string
+        '400':
+          description: 'Błąd w formacie daty'
+          headers:
+            Cause:
+              description: '' 
+              schema:
+                type: string
+        '204':
+          description: 'Ilość sprzętu jest równa 0'
+          headers:
+            Cause:
+              description: '' 
+              schema:
+                type: string
   /training-plan/save:
     post:
       tags:
@@ -994,6 +1015,8 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/ExerciseExecution"
+        dayOfTraining:
+          type: integer
     ListOfTrainingPlans:
       type: array
       items:
