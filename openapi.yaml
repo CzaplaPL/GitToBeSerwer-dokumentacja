@@ -582,7 +582,7 @@ paths:
           description: 'W przypadku, gdy wystąpi bład w formularzu Cause zwróci opis co jest błędne'
           headers:
             Cause:
-              description: '' 
+              description: 'Body part: BODY_PART is unknown;0 body parts;Training type: TRAINTNG_TYPE is unknown;Days count: DAYS_COUNT is less than 0;Duration: DURATION is less than 0;Schedule type: SCHEDULE_TYPE is unknown' 
               schema:
                 type: string
         '417':
