@@ -1004,6 +1004,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TrainingPlan'
+        createdAt:
+          type: string
+        dayOfTraining:
+          type: integer
     Training:
       type: object
       properties:
@@ -1015,7 +1019,9 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/ExerciseExecution"
-        dayOfTraining:
+        breakTime:
+          type: integer
+        circuitsCount:
           type: integer
     ListOfTrainingPlans:
       type: array
@@ -1031,4 +1037,4 @@ components:
     ListOfTablesControlSum:
       type: array
       items:
-        $ref: "#/components/schemas/TableControlSum"    
+        $ref: "#/components/schemas/TableControlSum"
